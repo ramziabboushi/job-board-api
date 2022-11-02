@@ -18,7 +18,7 @@ var xhttp = new XMLHttpRequest();
                             <p class="location">${row.location}</p>
                         </div>
                         <div class="mid-section">
-                            ${row.tags.map(function(tag) {
+                            ${row.tags.slice(0, 10).map(function(tag) {
                                 return `<div class="tag">${tag}</div>`
                             }).join('')}
                         </div>
@@ -32,9 +32,10 @@ var xhttp = new XMLHttpRequest();
                         </div>
                     `
                     container.appendChild(rowDiv)
+                    console.log(data);
                 });
             }
         };
-
-        xhttp.open("GET", "https://remoteok.io/api", true);
+        
+        xhttp.open("GET", "https://remoteok.com/api?tag=dev", true);
         xhttp.send();
